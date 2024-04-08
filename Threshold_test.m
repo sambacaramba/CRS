@@ -58,7 +58,8 @@ title(['threshold:' num2str(L) ' y-plane']);
 K=K+1;
 
  end
- sgtitle([filename ' chosen threshold level= ' num2str(round(tresh*256))])
+ titlename = replace(filename, '_',' ');
+ sgtitle([titlename ' chosen threshold level= ' num2str(round(tresh*256))])
 
 % f.Padding = 'tight'; % remove white space around the figure
 % f.Spacing = [0.02 0.02]; % set the spacing between subplots

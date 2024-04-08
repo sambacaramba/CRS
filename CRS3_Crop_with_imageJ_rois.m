@@ -10,7 +10,7 @@ close all
 %% settings 
 % flipH = 1; %flip the loaded image horizontally (required for scanco data) 
 % flipH = 0; %dont flip the loaded image horizontally (bruker data) 
-flipH = 0;
+flipH = 1;
 % ThreeD = 0 ; slicewise cleaning of data (use if very low memory)
 % ThreeD = 1 ; sweeping in 3D (should be used now as the data is much smaller)
 ThreeD = 1;
@@ -53,10 +53,7 @@ end
 Paths = struct([])
 
 for j = 1:length(selpath)
-
-
     
-    %Use this if all rec files are in a separate folder  
  Paths(j).vol_folder = [selpath(j).name, '\']
  subdir = dir([selpath(j).name, '\']);
  

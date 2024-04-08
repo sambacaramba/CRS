@@ -4,7 +4,7 @@ clear all
 %% used functions, FillHoles3D, CRS_surface_fit
 %% important parameters
 %isotropic pixels size of the data
-voxel_size=2.8;
+voxel_size=4.5;
 % how far (in pixels) from the surface the estimated surface is fitted (20-30 µm is a good value)
 % used only for visualization
 offset_value=8;

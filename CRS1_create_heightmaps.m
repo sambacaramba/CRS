@@ -53,10 +53,10 @@ for j= 1:numel(folders)
 close all 
 
 %% test thresholding (saves outputs to folder)
-Threshold_test(vol, savepath, fname, );
+Threshold_test(vol, savepath, fname, threshold_mult);
 
 %% get heightmap from surface
-[heightmap] = Universal_roi_image_maker(vol,ThreeD);  
+[heightmap] = Universal_roi_image_maker(vol,ThreeD,threshold_mult);  
 
 save([savepath,fname '_heightmap'],'heightmap');
 

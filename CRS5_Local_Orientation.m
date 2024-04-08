@@ -5,7 +5,7 @@ clear all
  
 % the radius should be close to 15µm so that the moving window area is close to 900µm^2
 %set your voxel size
-voxel_size = 2.8;
+voxel_size = 4.5;
 
 %decide radius based on voxel size
 for i=1:20 
@@ -37,7 +37,7 @@ for i = 1:length(files)
         res1 = CRS_local_plane_difference(ref1, tar1, radius);
        
         
-        save([files(i).folder,'\',surfitres.sample,'_local_orientation_',num2str(radius*2+1),'_pixeldiam.mat'],'res1');
+        save([files(i).folder,'\',surfitres.sample,'_local_orientation_',num2str(radius*2),'_pixeldiam.mat'],'res1');
         clear res1 ref1 tar1 testres
 %     else 
 %     end
