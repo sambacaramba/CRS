@@ -10,7 +10,7 @@ close all
 %% settings 
 % flipH = 1; %flip the loaded image horizontally (required for scanco data) 
 % flipH = 0; %dont flip the loaded image horizontally (bruker data) 
-flipH = 1;
+flipH = 0;
 % ThreeD = 0 ; slicewise cleaning of data (use if very low memory)
 % ThreeD = 1 ; sweeping in 3D (should be used now as the data is much smaller)
 ThreeD = 1;
@@ -41,7 +41,7 @@ end
     % Roi file location
     % Filename
     savepath_fold = [selpath(1).folder '\Pathfile'];
-savepath = [selpath(1).folder '\Pathfile\Paths.mat'];
+savepath = [selpath(1).folder '\Pathfile\Paths_TZ.mat'];
 
  A = exist(savepath_fold)
 if A == 0

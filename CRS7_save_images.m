@@ -14,7 +14,7 @@ HL= num2str(High_limit); %high lmiit in string format
 
 %load local orientation files to struct (Change name accordingly (*_orientation_X_pixeldiam.mat))
 selpath = uigetdir('D:\', 'choose folder for local orientation files');
-files = dir(fullfile(selpath,'*_orientation_11_pixeldiam.mat'));
+files = dir(fullfile(selpath,'*_orientation_10_pixeldiam.mat'));
 
 %load surfaces to struct
 selpath2 = uigetdir('D:\', 'choose folder for surfitres files');

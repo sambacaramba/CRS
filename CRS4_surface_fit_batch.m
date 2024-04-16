@@ -4,7 +4,7 @@ clear all
 %% used functions, FillHoles3D, CRS_surface_fit
 %% important parameters
 %isotropic pixels size of the data
-voxel_size=4.5;
+voxel_size=2.8;
 % how far (in pixels) from the surface the estimated surface is fitted (20-30 µm is a good value)
 % used only for visualization
 offset_value=8;
@@ -104,10 +104,14 @@ tmp = imopen(tmp,SE);
 end
    lat_vol =  permute(lat_vol_perm,[1 3 2]);
 
-num = max(strfind(fname1,'\'));
-num2 = max(strfind(fname1,'_'));
-fn = fname1(num+1:num2);
-fn = [fn,'lateral'];
+  fname1 = Paths(i).vol_folder 
+  locat=strfind(fname1,'\');
+inds = length(strfind(fname1,'\'))-1;
+num1 = locat(inds)+1;
+ num2=max(strfind(fname1,'\'));
+
+fn = fname1(num1:num2-1);
+fn = [fn,'_lateral'];
 %% surface fitting 
 surfvals = CRS_surface_fit(lat_vol,fn, savefold,res_loc,voxel_size,offset_value,polX,polY,finetune,removal_threshold);
 %%
@@ -158,10 +162,14 @@ tmp = imopen(tmp,SE);
 end
    med_vol =  permute(med_vol_perm,[1 3 2]);
 
-num = max(strfind(fname1,'\'));
-num2 = max(strfind(fname1,'_'));
-fn = fname1(num+1:num2);
-fn = [fn,'medial'];
+  fname1 = Paths(i).vol_folder 
+  locat=strfind(fname1,'\');
+inds = length(strfind(fname1,'\'))-1;
+num1 = locat(inds)+1;
+ num2=max(strfind(fname1,'\'));
+
+fn = fname1(num1:num2-1);
+fn = [fn,'_medial'];
 %% surface fitting
 surfvals = CRS_surface_fit(med_vol,fn, savefold,res_loc,voxel_size,offset_value,polX,polY,finetune,removal_threshold);
 %%

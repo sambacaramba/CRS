@@ -6,7 +6,7 @@ clear all
 
 %load local orientation files to struct
 selpath = uigetdir('D:', 'choose folder for local orientation files');
-files = dir(fullfile(selpath,'*orientation_6_pixeldiam.mat')); %a common name for files to look for
+files = dir(fullfile(selpath,'*orientation_10_pixeldiam.mat')); %a common name for files to look for
 
 %load surfaces to struct
 selpath2 = uigetdir('D:', 'choose folder for surfitRes files');

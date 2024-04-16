@@ -5,7 +5,7 @@ clear all
  
 % the radius should be close to 15µm so that the moving window area is close to 900µm^2
 %set your voxel size
-voxel_size = 4.5;
+voxel_size = 2.8;
 
 %decide radius based on voxel size
 for i=1:20 
@@ -25,7 +25,7 @@ files = dir(fullfile(selpath,'*surfitRes.mat'));
 %     radius = ii;
  n=1
 %analyze local orienation  
-for i = 1:length(files)
+for i = 6:length(files)
     
     name = files(i).name
          
