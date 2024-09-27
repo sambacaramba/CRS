@@ -4,7 +4,10 @@ clear all
 %% needed files: mycolormap_orientation.mat
 
 %% settings
-radname ='_5_'; %radius in pixels that was used in the analyses 
+settings = loadSettingsFromFile()
+
+radn = settings.CRS5.radius; %radius in pixels that was used in the analyses
+radname = ['_' num2str(radn) '_']
 Low_limit = 10; %Lower limit for showing angles (healthy vs. damaged threshold)
 High_limit = 45; %Upper limit for showing angles (decrease to ipmrove dynamic range for smaller angles)
 %%
@@ -12,12 +15,13 @@ High_limit = 45; %Upper limit for showing angles (decrease to ipmrove dynamic ra
 LL= num2str(Low_limit); %low limit in string format
 HL= num2str(High_limit); %high lmiit in string format
 
-%load local orientation files to struct (Change name accordingly (*_orientation_X_pixeldiam.mat))
+
+com_filename = ['*orientation_' num2str(radn*2) '_pixeldiam.mat'];
+%load local orientation files to struct 
 selpath = uigetdir('D:\', 'choose folder for local orientation files');
-files = dir(fullfile(selpath,'*_orientation_10_pixeldiam.mat'));
+files = dir(fullfile(selpath,com_filename));
 
 %load surfaces to struct
-selpath2 = uigetdir('D:\', 'choose folder for surfitres files');
 files2 = dir(fullfile(selpath,'*surfitRes.mat'));
 
 savefold = [selpath '\Orientation\images\' LL 'to' HL '\'];

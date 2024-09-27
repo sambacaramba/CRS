@@ -8,18 +8,19 @@ clear all
 close all 
 
 %% settings 
+settings = loadSettingsFromFile()
 % flipH = 1; %flip the loaded image horizontally (required for scanco data) 
 % flipH = 0; %dont flip the loaded image horizontally (bruker data) 
-flipH = 0;
+flipH = settings.CRS3.flipH
 % ThreeD = 0 ; slicewise cleaning of data (use if very low memory)
 % ThreeD = 1 ; sweeping in 3D (should be used now as the data is much smaller)
-ThreeD = 1;
+ThreeD = settings.CRS3.ThreeD
 
-filetype = '*.png'; %what files to look for in cropping
-file_extension = '.png' %what files to look for inside the folder
-common_nom = 'RAT' %common nominator for filenames (excludes files that dont have this in the filename)
+filetype = settings.CRS3.filetype %what files to look for in cropping
+file_extension = settings.CRS3.file_extension %what files to look for inside the folder
+common_nom = settings.CRS3.common_nom %common nominator for filenames (excludes files that dont have this in the filename)
 
-threshold_mult = 1.3; %For Thresholding to push the low limit up. Cartilage is stained with a slightly higher intnsity that 
+threshold_mult = settings.CRS1.threshold_mult %For Thresholding to push the low limit up. Cartilage is stained with a slightly higher intnsity that 
 %bone is seen in the images. This pushes the limit towards cartilage. 
 
 

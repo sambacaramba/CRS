@@ -2,26 +2,29 @@
 clear all 
 close all 
 clc
+
 %% used functions:  Universal_volumeloader_0234, Universal_roi_image_maker, func_threshold(automatic segmentation) 
 
 %% settings for loading data 
-binning = 0; %set to 0(100% size), 2(50%size), 3(33.3% size) or 4(25% size) (bins the data as it's loaded)
-dataformat ='*.png' %what dataformat to look for
+settings = loadSettingsFromFile()
+
+binning = settings.CRS1.binning %set to 0(100% size), 2(50%size), 3(33.3% size) or 4(25% size) (bins the data as it's loaded)
+dataformat =settings.CRS1.dataformat %what dataformat to look for
  
 %flipping of the data is needed for some scanners (for exmaple scanco data
 %must be flipped, while data from bruker scanners doesn't) 
 
 % flipH = 1; %flip the loaded image horizontally
 % flipH = 0; %dont flip the loaded image horizontally
-flipH = 0;
+flipH = settings.CRS1.flipH
 
 %ThreeD = 0 ; slicewise cleaning of data (use if less RAM than 3x uncompressed datasize)
 %ThreeD = 1 ; sweeping in 3D (use if sufficient memory)
-ThreeD = 0;
+ThreeD = settings.CRS1.ThreeD
 
 %For Thresholding to push the low limit up. Cartilage is stained with
 %a slightly higher intnsity than bone. This pushes the limit towards cartilage. 
-threshold_mult = 1.3; 
+threshold_mult = settings.CRS1.threshold_mult 
  
 %% choose what folder to analyze and load data (single sample or batch) 
 folders = uipickfiles('FilterSpec','C:\','Output','struct')

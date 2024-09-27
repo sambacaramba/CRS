@@ -3,24 +3,25 @@ clear all
 %load paths file
 %% used functions, FillHoles3D, CRS_surface_fit
 %% important parameters
+settings = loadSettingsFromFile()
 %isotropic pixels size of the data
-voxel_size=2.8;
+voxel_size=settings.CRS4.voxel_size
 % how far (in pixels) from the surface the estimated surface is fitted (20-30 µm is a good value)
 % used only for visualization
 offset_value=8;
 %what type of images to search for
-IMAGETYPE = '*.png';
+IMAGETYPE = settings.CRS3.filetype
 %Surfacefit poly count
-polX = 5;
-polY = 5;
+polX = settings.CRS4.polX
+polY = settings.CRS4.polY
 %Choose if you want to use finetuning of surface fit (1=use, 0= don't use)
 %(useful only for depthwise difference calculation... can cause edge artefacts in the fit)
 finetune = 0;
 %choose the threshold for removal of outliers from iterative fit (10 is default for 2.8µm resolution data
 %increase for higher resolution and decrease for lower to get best results)
-removal_threshold = 10; 
-%fill holes less than ("holefill" / voxel size) 
-holefill = 150000; 
+removal_threshold = settings.CRS4.removal_threshold 
+%fill holes less than ("holefill" / voxel size) default= 150000
+holefill = settings.CRS4.holefill; 
 
 
 %%

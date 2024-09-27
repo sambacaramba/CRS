@@ -6,7 +6,7 @@ tresh_otsu = round(graythresh(vol_a)*256)
 tresh_func_threshold = round(func_threshold(vol_a))
 
 tresh = (tresh_func_threshold/256)*mult;
-
+level_orig = tresh_func_threshold;
 level = tresh_func_threshold*mult;
 %bin the data to reduce memory requirements
    vol_f = imresize3(vol_a, 0.5, 'Method', 'linear');
@@ -22,9 +22,9 @@ f.Position = [round((s_size(3)/5)/2),round((s_size(4)/5)/2),s_size(3)-round((s_s
 
 
 K=1;
- for L=level-20:10:level+20
-    nm = length(level-20:10:level+20);
-J_ = imbinarize(vol_f,(L/255));
+ for L=mult-0.2:0.1:mult+0.2
+    nm = length(mult-0.2:0.1:mult+0.2);
+J_ = imbinarize(vol_f,((L*level_orig)/255));
 
 slice = vol_f(:,:,slice_z);
 slice_BW = J_(:,:,slice_z);

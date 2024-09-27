@@ -5,7 +5,8 @@ clear all
  
 % the radius should be close to 15µm so that the moving window area is close to 900µm^2
 %set your voxel size
-voxel_size = 2.8;
+settings = loadSettingsFromFile()
+voxel_size = settings.CRS4.voxel_size
 
 %decide radius based on voxel size
 for i=1:20 
@@ -15,6 +16,7 @@ minimum = min(difference)
  ind = difference == minimum;
  radius = find(ind,1,'last')
  
+appendSettingsFile(radius);
 
 %select folder with surfitRes files
 selpath = uigetdir('C:\', 'choose folder with surfitRes files');
@@ -25,7 +27,7 @@ files = dir(fullfile(selpath,'*surfitRes.mat'));
 %     radius = ii;
  n=1
 %analyze local orienation  
-for i = 6:length(files)
+for i = 23:length(files)
     
     name = files(i).name
          

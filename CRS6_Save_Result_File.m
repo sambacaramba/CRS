@@ -3,13 +3,17 @@ clear all
 
 %% used functions GetSurfNormVector
 
+settings = loadSettingsFromFile()
+
+%what filenames to look for
+radname = settings.CRS5.radius
+com_filename = ['*orientation_' num2str(radname*2) '_pixeldiam.mat'];
 
 %load local orientation files to struct
 selpath = uigetdir('D:', 'choose folder for local orientation files');
-files = dir(fullfile(selpath,'*orientation_10_pixeldiam.mat')); %a common name for files to look for
+files = dir(fullfile(selpath,com_filename)); %a common name for files to look for
 
 %load surfaces to struct
-selpath2 = uigetdir('D:', 'choose folder for surfitRes files');
 files2 = dir(fullfile(selpath,'*surfitRes.mat')); %a common name for files to look for
 
 %create savefolder 
